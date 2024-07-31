@@ -1,0 +1,35 @@
+class Printer:
+    def __init__(self):
+        self.Script = {}
+
+    def display_script(self):
+        text = self.Script.get("text", "No text")
+        color = self.Script.get("text_color", "white")
+
+        color_map = {
+            "red": "\033[31m",
+            "green": "\033[32m",
+            "yellow": "\033[33m",
+            "blue": "\033[34m",
+            "magenta": "\033[35m",
+            "cyan": "\033[36m",
+            "white": "\033[37m",
+            "reset": "\033[0m"
+        }
+
+        color_code = color_map.get(color, color_map["white"])
+        print(f"{color_code}{text}{color_map['reset']}")
+
+def printer():
+    return Printer()
+
+VaxSystem_Version = "2.0"
+
+Text = printer()
+
+Text.Script = {
+    "text": "Hello",
+    "text_color": "red"  # Set color here
+}
+
+Text.display_script()
