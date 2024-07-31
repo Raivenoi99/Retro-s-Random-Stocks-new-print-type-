@@ -1,0 +1,38 @@
+local colors = {
+    red = "\27[31m",
+    green = "\27[32m",
+    yellow = "\27[33m",
+    blue = "\27[34m",
+    magenta = "\27[35m",
+    cyan = "\27[36m",
+    white = "\27[37m",
+    reset = "\27[0m"
+}
+
+Printer = {}
+Printer.__index = Printer
+
+function Printer.new()
+    local self = setmetatable({}, Printer)
+    self.Script = {}
+    return self
+end
+
+function printer()
+    return Printer.new()
+end
+
+VaxSystem_Version = "2.0" --custom version i made
+
+local Text = printer()
+
+Text.Script = {
+    text = "Hello",
+    text_color = "red" -- Color here
+}
+
+local text = Text.Script.text or "No text"
+local color = Text.Script.text_color or "white"
+local color_code = colors[color] or colors.white
+
+print(color_code .. text .. colors.reset)
